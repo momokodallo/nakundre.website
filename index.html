@@ -1,132 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Birthday Surprise 🎁</title>
-
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial;
-            background: #fff0f6;
-            padding-top: 100px;
-            overflow: hidden;
-        }
-
-        button {
-            padding: 12px 20px;
-            font-size: 18px;
-            border: none;
-            background: hotpink;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        #msg {
-            display: none;
-            margin-top: 30px;
-            font-size: 24px;
-            color: deeppink;
-            font-weight: bold;
-            animation: pop 0.6s ease;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-    </style>
-</head>
-
 <body>
 
-    <h1>🎁 Click for Surprise</h1>
+<button onclick="showMsg()">Open Surprise 🎉</button>
 
-    <button onclick="showMsg()">Open Surprise 🎉</button>
+<div id="msg" style="display:none; margin-top:20px;">
+💖 Surprise works!
+</div>
 
-    <div id="msg">
-        💖 You are an amazing friend! Happy Birthday! 🎂🎉
-    </div>
-
-    <audio id="sound">
-        <source src="https://www.soundjay.com/human/sounds/applause-8.mp3" type="audio/mpeg">
-    </audio>
-
-    <canvas id="confetti"></canvas>
-
-    <script>
-        const canvas = document.getElementById("confetti");
-        const ctx = canvas.getContext("2d");
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        resizeCanvas();
-        window.addEventListener("resize", resizeCanvas);
-
-        let pieces = [];
-
-        function createPiece() {
-            return {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 6 + 2,
-                speed: Math.random() * 2 + 1,
-                color: `hsl(${Math.random() * 360}, 100%, 60%)`
-            };
-        }
-
-        for (let i = 0; i < 120; i++) {
-            pieces.push(createPiece());
-        }
-
-        let animationRunning = false;
-
-        function startConfetti() {
-            if (animationRunning) return;
-            animationRunning = true;
-
-            function update() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                pieces.forEach(p => {
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(p.x, p.y, p.size, p.size);
-
-                    p.y += p.speed;
-
-                    if (p.y > canvas.height) {
-                        p.y = 0;
-                        p.x = Math.random() * canvas.width;
-                    }
-                });
-
-                requestAnimationFrame(update);
-            }
-
-            update();
-        }
-
-        function showMsg() {
-            document.getElementById("msg").style.display = "block";
-
-            const sound = document.getElementById("sound");
-            sound.play().catch(() => {
-                console.log("Audio blocked by browser");
-            });
-
-            startConfetti();
-        }
-    </script>
+<script>
+function showMsg() {
+    document.getElementById("msg").style.display = "block";
+}
+</script>
 
 </body>
 </html>
