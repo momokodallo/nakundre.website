@@ -9,105 +9,73 @@ body {
     margin: 0;
     font-family: Arial;
     text-align: center;
-    overflow: hidden;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
     color: white;
+    overflow: hidden;
 }
 
-/* Card */
-.card {
-    margin-top: 120px;
-    background: rgba(255,255,255,0.2);
-    padding: 30px;
-    width: 80%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Title */
 h1 {
-    font-size: 45px;
-    text-shadow: 2px 2px 10px black;
+    font-size: 60px;
 }
 
-/* Button */
+p {
+    font-size: 22px;
+    max-width: 600px;
+}
+
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
-    cursor: pointer;
     font-size: 16px;
-    background: white;
-    color: #ff4d6d;
-    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Hidden message */
 #msg {
     display: none;
-    margin-top: 15px;
-    font-size: 18px;
+    margin-top: 20px;
+    font-size: 22px;
 }
 
-/* 🎈 Balloons */
 .balloon {
     position: absolute;
     bottom: -150px;
     width: 50px;
-    animation: float 10s infinite;
+    animation: float 8s infinite;
 }
 
 @keyframes float {
     0% { transform: translateY(0); }
     100% { transform: translateY(-120vh); }
 }
-
-/* 🎊 Confetti */
-.confetti {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: yellow;
-    animation: fall 5s infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10%); }
-    100% { transform: translateY(110vh); }
-}
 </style>
 </head>
 
 <body>
 
-<!-- 🎈 Balloons -->
 <img class="balloon" style="left:10%;" src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png">
-<img class="balloon" style="left:80%; animation-delay:3s;" src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png">
+<img class="balloon" style="left:80%; animation-delay:2s;" src="https://cdn-icons-png.flaticon.com/512/3468/3468371.png">
 
-<!-- 🎊 Confetti -->
-<div class="confetti" style="left:20%;"></div>
-<div class="confetti" style="left:40%; background:red;"></div>
-<div class="confetti" style="left:60%; background:blue;"></div>
-<div class="confetti" style="left:80%; background:yellow;"></div>
-
-<div class="card">
+<div class="hero">
     <h1>🎉 Happy Birthday! 🎂</h1>
 
     <p>
-        Wishing you a day filled with happiness, laughter, and love ❤️
-        You are truly special and deserve the best in life.
+        Wishing you happiness, love, and success always ❤️
     </p>
 
     <button onclick="showMsg()">Open Surprise 🎁</button>
 
     <div id="msg">
-        💖 You are an amazing friend!  
-        Thank you for being part of my life 💖
+        💖 You are an amazing friend! Happy Birthday! 🎉
     </div>
 </div>
 
